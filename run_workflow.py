@@ -11,9 +11,7 @@ async def main() -> None:
     # Create client connected to server at the given address
     client: Client = await Client.connect("192.168.0.50:7233")
 
-    data: CurrentDetails = CurrentDetails(
-        location="Ohio"
-    )
+    data: CurrentDetails = CurrentDetails(location="Ohio")
 
     try:
         result = await client.execute_workflow(

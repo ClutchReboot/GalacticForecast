@@ -15,10 +15,9 @@ api_key = os.getenv("WEATHER_API_KEY")
 
 class WeatherApiActivities:
     def __init__(self):
-        print(f'api_key: {api_key}')
+        print(f"api_key: {api_key}")
         self.weather_api_service = WeatherApiService(
-            host="api.weatherapi.com",
-            api_key=api_key
+            host="api.weatherapi.com", api_key=api_key
         )
 
     @activity.defn

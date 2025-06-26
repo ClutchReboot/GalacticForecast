@@ -14,21 +14,25 @@ class WeatherApiService:
 
     def get_current(self, location: str) -> requests:
         if not isinstance(location, str):
-            raise InvalidLocationError('Invalid Type. Location should be of type "string".')
+            raise InvalidLocationError(
+                'Invalid Type. Location should be of type "string".'
+            )
 
-        url = f"http://{self.host}/v1/current.json?key={self.api_key}&q={location}&aqi=no"
+        url = (
+            f"http://{self.host}/v1/current.json?key={self.api_key}&q={location}&aqi=no"
+        )
         r = requests.get(url, headers={"Content-Type": "application/json"})
 
         if not r.status_code == 200:
             raise RequestError
-        
+
         print(f"{r.json()=}")
         data = r.json()
         result: CurrentResponse = CurrentResponse(
-            name = data.get('location', {}).get('name', None),
-            country = data.get('location', {}).get('country', None),
-            text = data.get('current', {}).get('condition', {}).get('text', None),
-            temp_c = data.get('current', {}).get('temp_c', None),
-            temp_f = data.get('current', {}).get('temp_f', None),
+            name=data.get("location", {}).get("name", None),
+            country=data.get("location", {}).get("country", None),
+            text=data.get("current", {}).get("condition", {}).get("text", None),
+            temp_c=data.get("current", {}).get("temp_c", None),
+            temp_f=data.get("current", {}).get("temp_f", None),
         )
         return result

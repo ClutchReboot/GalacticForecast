@@ -12,7 +12,7 @@ with workflow.unsafe.imports_passed_through():
 @workflow.defn
 class OhioCurrent:
     @workflow.run
-    async def run(self, current_details: CurrentDetails) -> str:
+    async def run(self, current_details: CurrentDetails) -> dict:
         retry_policy = RetryPolicy(
             maximum_attempts=3,
             maximum_interval=timedelta(seconds=2),
@@ -20,7 +20,7 @@ class OhioCurrent:
         )
 
         # Get Current weather
-        try: 
+        try:
             result = await workflow.execute_activity_method(
                 WeatherApiActivities.current,
                 current_details,
