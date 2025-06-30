@@ -23,3 +23,4 @@ class WeatherApiActivities:
             raise
         except Exception:
             activity.logger.exception("Get current failed")
+            raise

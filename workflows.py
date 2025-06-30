@@ -31,3 +31,5 @@ class OhioCurrent:
             return result
         except ActivityError as current_err:
             workflow.logger.error(f"Unable to get weather info: {current_err}")
+        except Exception:
+            raise

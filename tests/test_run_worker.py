@@ -12,6 +12,9 @@ from workflows import OhioCurrent
 
 
 class TestOhioCurrent:
+    def setup_method(self):
+        self.activity = WeatherApiActivities()
+
     @pytest.mark.asyncio
     async def test_current_success(self) -> None:
         task_queue_name: str = str(uuid.uuid4())
@@ -19,12 +22,12 @@ class TestOhioCurrent:
             data: CurrentDetails = CurrentDetails(
                 location="London",
             )
-            activities = WeatherApiActivities()
+            
             async with Worker(
                 env.client,
                 task_queue=task_queue_name,
                 workflows=[OhioCurrent],
-                activities=[activities.current],
+                activities=[self.activity.current],
             ):
                 result: str = await env.client.execute_workflow(
                     OhioCurrent.run,

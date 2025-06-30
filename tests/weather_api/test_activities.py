@@ -1,11 +1,11 @@
-import json
 import pytest
-from unittest.mock import patch, mock_open
+from unittest.mock import patch
 
 from temporalio.testing import ActivityEnvironment
 
 from weather_api_app.activities import WeatherApiActivities
-from weather_api_app.shared import CurrentDetails, CurrentResponse
+from weather_api_app.service import WeatherApiService
+from weather_api_app.shared import CurrentDetails
 from weather_api_app.exceptions import InvalidLocationError
 
 class TestWeatherApiActivities:
@@ -29,3 +29,12 @@ class TestWeatherApiActivities:
         )
         with pytest.raises(InvalidLocationError):
             await self.activity_env.run(self.activity.current, data)
+
+    @pytest.mark.asyncio
+    async def test_general_exception(self):
+        data = CurrentDetails(
+            location=5
+        )
+        with patch.object(self.activity.weather_api_service, 'get_current', side_effect=Exception):
+            with pytest.raises(Exception):
+                await self.activity_env.run(self.activity.current, data)
