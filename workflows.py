@@ -5,7 +5,7 @@ from temporalio.common import RetryPolicy
 from temporalio.exceptions import ActivityError
 
 with workflow.unsafe.imports_passed_through():
-    from activities import WeatherApiActivities
+    from activities.weather_api_activities import WeatherApiActivities
     from shared import CurrentDetails
 
 
@@ -28,7 +28,6 @@ class OhioCurrent:
                 retry_policy=retry_policy,
             )
             print(f"{result=}")
-            # result = f"Weather in {current.name} is currently {current.text} at {current.temp_f} degrees Fahrenheit."
             return result
         except ActivityError as current_err:
             workflow.logger.error(f"Unable to get weather info: {current_err}")

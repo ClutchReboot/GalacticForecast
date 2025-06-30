@@ -4,7 +4,7 @@ from temporalio.client import Client
 from temporalio.worker import Worker
 
 from shared import WEATHER_API_CURRENT_QUEUE_NAME
-from activities import WeatherApiActivities
+from activities.weather_api_activities import WeatherApiActivities
 from workflows import OhioCurrent
 
 

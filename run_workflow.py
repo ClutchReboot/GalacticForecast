@@ -21,8 +21,6 @@ async def main() -> None:
             task_queue=WEATHER_API_CURRENT_QUEUE_NAME,
         )
 
-        print(f"Result: {result}")
-
     except WorkflowFailureError:
         print("Got expected exception: ", traceback.format_exc())
 
