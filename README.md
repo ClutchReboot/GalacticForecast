@@ -4,34 +4,20 @@ This is the code to support the tutorial at https://learn.temporal.io/getting_st
 
 To use this code, make sure you have a [Temporal Cluster running](https://docs.temporal.io/docs/server/quick-install/) first.
 
+## Workflow
+Activate the virtual environment:
 
-Clone this repo and run this application.
-
-```bash
-git clone https://github.com/temporalio/money-transfer-project-template-python
-cd money-transfer-project-template-python
-```
-
-Create a virtual environment and activate it. On macOS and Linux, run these commands:
+On macOS or Linux, run this command:
 
 ```
-python3 -m venv env
 source env/bin/activate
 ```
 
-On Windows, run these commands:
+On Windows, run this command:
 
 ```
-python -m venv env
 env\Scripts\activate
 ```
-
-With the virtual environment configured, install the Temporal SDK:
-
-```
-python -m pip install temporalio
-```
-
 
 Run the workflow:
 
@@ -39,6 +25,7 @@ Run the workflow:
 python run_workflow.py
 ```
 
+## Worker
 In another window, activate the virtual environment:
 
 On macOS or Linux, run this command:
