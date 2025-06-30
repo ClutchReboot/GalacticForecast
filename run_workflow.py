@@ -14,7 +14,7 @@ async def main() -> None:
     data: CurrentDetails = CurrentDetails(location="Ohio")
 
     try:
-        result = await client.execute_workflow(
+        await client.execute_workflow(
             OhioCurrent.run,
             data,
             id="ohio-100",

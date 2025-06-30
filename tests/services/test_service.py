@@ -1,13 +1,13 @@
-import os
 import pytest
 from unittest.mock import Mock, patch
 
 from services.weather_api_service import WeatherApiService
 from shared import CurrentResponse
 from exceptions import RequestError, InvalidLocationError
+from activities import config
 
+api_key = config.get("WEATHER_API_KEY")
 
-api_key = os.getenv("WEATHER_API_KEY")
 
 class TestGetCurrent:
     def test_returned_result(self):
@@ -17,12 +17,11 @@ class TestGetCurrent:
         assert results.name == "London"
 
     def test_invalid_location_exception(self):
-        # Validate 'InvalidLocationError'
         was = WeatherApiService(host="api.weatherapi.com", api_key=api_key)
         with pytest.raises(InvalidLocationError):
             was.get_current(location=5)
 
-        # Validate 'RequestError'
+    def test_request_exception(self):
         mock_response = Mock()
         mock_response.ok = False  # Simulate failed request
         mock_response.status_code = 500
