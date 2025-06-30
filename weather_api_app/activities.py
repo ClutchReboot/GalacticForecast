@@ -1,10 +1,10 @@
 import asyncio
 
 from temporalio import activity
-from services.weather_api_service import WeatherApiService
-from exceptions import InvalidLocationError
-from shared import CurrentDetails, CurrentResponse
-from activities import config
+from weather_api_app.service import WeatherApiService
+from weather_api_app.exceptions import InvalidLocationError
+from weather_api_app.shared import CurrentDetails, CurrentResponse
+from weather_api_app import config
 
 
 class WeatherApiActivities:

@@ -1,10 +1,10 @@
 import pytest
 from unittest.mock import Mock, patch
 
-from services.weather_api_service import WeatherApiService
-from shared import CurrentResponse
-from exceptions import RequestError, InvalidLocationError
-from activities import config
+from weather_api_app.service import WeatherApiService
+from weather_api_app.shared import CurrentResponse
+from weather_api_app.exceptions import RequestError, InvalidLocationError
+from weather_api_app import config
 
 api_key = config.get("WEATHER_API_KEY")
 

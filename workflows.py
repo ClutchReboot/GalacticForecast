@@ -5,8 +5,8 @@ from temporalio.common import RetryPolicy
 from temporalio.exceptions import ActivityError
 
 with workflow.unsafe.imports_passed_through():
-    from activities.weather_api_activities import WeatherApiActivities
-    from shared import CurrentDetails
+    from weather_api_app.activities import WeatherApiActivities
+    from weather_api_app.shared import CurrentDetails
 
 
 @workflow.defn

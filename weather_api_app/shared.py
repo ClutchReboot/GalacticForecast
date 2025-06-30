@@ -1,5 +1,4 @@
 from dataclasses import dataclass
-from dotenv import load_dotenv
 
 
 WEATHER_API_CURRENT_QUEUE_NAME = "GET_CURRENT_OHIO_WEATHER"

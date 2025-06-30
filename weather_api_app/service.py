@@ -1,7 +1,7 @@
 import requests
 
-from exceptions import InvalidLocationError, RequestError
-from shared import CurrentResponse
+from weather_api_app.exceptions import InvalidLocationError, RequestError
+from weather_api_app.shared import CurrentResponse
 
 
 class WeatherApiService:

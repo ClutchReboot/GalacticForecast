@@ -3,7 +3,7 @@ import traceback
 
 from temporalio.client import Client, WorkflowFailureError
 
-from shared import CurrentDetails, WEATHER_API_CURRENT_QUEUE_NAME
+from weather_api_app.shared import CurrentDetails, WEATHER_API_CURRENT_QUEUE_NAME
 from workflows import OhioCurrent
 
 

@@ -3,8 +3,8 @@ import asyncio
 from temporalio.client import Client
 from temporalio.worker import Worker
 
-from shared import WEATHER_API_CURRENT_QUEUE_NAME
-from activities.weather_api_activities import WeatherApiActivities
+from weather_api_app.shared import WEATHER_API_CURRENT_QUEUE_NAME
+from weather_api_app.activities import WeatherApiActivities
 from workflows import OhioCurrent
 
 
