@@ -4,7 +4,6 @@ from unittest.mock import patch
 from temporalio.testing import ActivityEnvironment
 
 from weather_api_app.activities import WeatherApiActivities
-from weather_api_app.service import WeatherApiService
 from weather_api_app.shared import CurrentDetails
 from weather_api_app.exceptions import InvalidLocationError
 

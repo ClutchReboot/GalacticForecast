@@ -12,7 +12,7 @@ class WeatherApiService:
         self.host = host
         self.api_key = api_key
 
-    def get_current(self, location: str) -> requests:
+    def get_current(self, location: str) -> CurrentResponse:
         try:
             if not isinstance(location, str):
                 raise InvalidLocationError(
@@ -26,13 +26,12 @@ class WeatherApiService:
                 raise RequestError("Failed to get 200 from endpoint.")
 
             data = r.json()
-            result: CurrentResponse = CurrentResponse(
+            return CurrentResponse(
                 name=data.get("location", {}).get("name", None),
                 country=data.get("location", {}).get("country", None),
                 text=data.get("current", {}).get("condition", {}).get("text", None),
                 temp_c=data.get("current", {}).get("temp_c", None),
                 temp_f=data.get("current", {}).get("temp_f", None),
             )
-            return result
         except Exception:
             raise
