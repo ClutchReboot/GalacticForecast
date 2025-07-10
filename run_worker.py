@@ -18,6 +18,7 @@ async def main() -> None:
         workflows=[OhioCurrent],
         activities=[activities.current],
     )
+    print("Worker started.")
     await worker.run()
 
 

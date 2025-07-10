@@ -22,7 +22,7 @@ class TestOhioCurrent:
             data: CurrentDetails = CurrentDetails(
                 location="London",
             )
-            
+
             async with Worker(
                 env.client,
                 task_queue=task_queue_name,

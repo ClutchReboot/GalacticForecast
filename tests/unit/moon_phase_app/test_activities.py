@@ -16,25 +16,21 @@ class TestMoonPhaseActivities:
 
     @pytest.mark.asyncio
     async def test_city_success(self):
-        data = CityDetails(
-            city='Budapest'
-        )
+        data = CityDetails(city="Budapest")
         result = await self.activity_env.run(self.activity.city, data)
         assert result.location == "Budapest"
-        
+
     @pytest.mark.asyncio
     async def test_invalid_city_exception(self):
-        data = CityDetails(
-            city=5
-        )
+        data = CityDetails(city=5)
         with pytest.raises(InvalidCityError):
             await self.activity_env.run(self.activity.city, data)
 
     @pytest.mark.asyncio
     async def test_general_exception(self):
-        data = CityDetails(
-            city=5
-        )
-        with patch.object(self.activity.moon_phase_service, 'get_city', side_effect=Exception):
+        data = CityDetails(city=5)
+        with patch.object(
+            self.activity.moon_phase_service, "get_city", side_effect=Exception
+        ):
             with pytest.raises(Exception):
                 await self.activity_env.run(self.activity.city, data)

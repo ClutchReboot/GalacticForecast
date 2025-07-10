@@ -12,10 +12,7 @@ class MoonPhaseService:
         self.host = host
         self.api_key = api_key
 
-        self.headers = {
-            'x-rapidapi-host': self.host,
-            'x-rapidapi-key': self.api_key
-        }
+        self.headers = {"x-rapidapi-host": self.host, "x-rapidapi-key": self.api_key}
 
     def get_city(self, city: str) -> CityResponse:
         try:

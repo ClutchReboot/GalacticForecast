@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 
-MOON_PHASE_CITY_QUEUE_NAME = "GET_CITY_BUDAPEST_MOON_PHASE"
+KROGER_QUEUE_NAME = "GET_CITY_BUDAPEST_MOON_PHASE"
 
 
 @dataclass
